@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Styled Components
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -11,7 +12,7 @@ const Container = styled.div`
 
 const Card = styled.div`
   width: 300px;
-  height: 200px;
+  height: 300px;
   padding: 1rem;
   background: rgba(0, 0, 255, 0.5);
   border-radius: 8px;
@@ -28,6 +29,7 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &:hover {
     height: 254px;
     transform: skew(0deg);
@@ -70,7 +72,7 @@ const Text = styled.p`
   padding: 0 1rem;
 `;
 
-const ProfileCard = () => {
+const ProfileCard = ({ user }) => {
   return (
     <Container>
       <Card>
@@ -80,14 +82,25 @@ const ProfileCard = () => {
           <Green />
         </Align>
         <Title> Image</Title>
+        <img
+          src={user.picture.large}
+          alt="User"
+          style={{
+            width: "120px",
+            height: "120px",
+            borderRadius: "50%",
+            marginBottom: "1rem",
+            border: "4px solid white",
+          }}
+        />
         <Text>
-         <h3>FirstName         LastNAme</h3>
-         <h3>Gender</h3>
-         <h3>Phone</h3>
+          <h3>{user.name.first} {user.name.last}</h3>
+          <h3>{user.gender}</h3>
+          <h3>{user.phone}</h3>
         </Text>
       </Card>
     </Container>
   );
 };
 
-export default ProfileCard;
+export default ProfileCard; // Make sure to export it properly
